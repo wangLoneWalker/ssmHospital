@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!-- 这里的id要和Mapper中的方法名一致 -->
+ <mapper namespace="com.hos.mapper.PatientCaseMapper">
+ <insert id="addCase" parameterType="PatientCase">
+ insert into patientCase (c_pid,c_pname,pstate,p_dname,pintime,p_result) values (#{c_pid},#{c_pname},#{pstate},#{p_dname},#{pintime},#{p_result})
+ </insert>
+ <update id="updateCase" parameterType="Integer">
+ update patientCase set c_pid=#{c_pid},c_pname=#{c_pname},pstate=#{pstate},p_dname=#{p_dname},pintime=#{pintime},p_result=#{p_result} where id=#{id}
+ </update>
+ <delete id="delCase" parameterType="Integer">
+ delete from patientCase where id=#{id}
+ </delete>
+ <select id="getCase" parameterType="String" resultType="PatientCase">
+ select * from patientCase where c_pid=#{c_pid}
+ </select>
+  <select id="selectAllCase" resultType="PatientCase">
+ select * from patientCase
+ </select>
+ </mapper>

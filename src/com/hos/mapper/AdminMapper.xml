@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!-- 这里的id要和Mapper中的方法名一致 -->
+ <mapper namespace="com.hos.mapper.AdminMapper">
+ <select id="getLogin" resultType="Admin" parameterType="String">
+ select * from admin where a_name=#{a_name}
+ </select>
+ <insert id="add" parameterType="Admin">
+ insert into admin (a_name,a_word,a_phone,a_email,createtime) values (#{a_name},#{a_word},#{a_phone},#{a_email},#{createtime})
+ </insert>
+ <update id="update" parameterType="Admin">
+ update admin set a_name=#{a_name},a_word=#{a_word},a_phone=#{a_phone},a_email=#{a_email},createtime=#{createtime} where id=#{id}
+ </update>
+ <delete id="delete" parameterType="Integer">
+ delete from admin where id=#{id}
+ </delete>
+ <select id="getAdmin" parameterType="Integer" resultType="Admin">
+ select * from admin where id=#{id}
+ </select>
+ <select id="selectAll" resultType="Admin">
+ select * from admin
+ </select>
+ <select id="count" resultType="int">
+ select count(*) from admin
+ </select>
+ </mapper>

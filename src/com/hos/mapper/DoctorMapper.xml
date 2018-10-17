@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hos.mapper.DoctorMapper">
+<insert id="addDoctor" parameterType="Doctor">
+insert into doctor (did,dname,dsex,record,national,political,depart,tel,intime) values (#{did},#{dname},#{dsex},#{record},#{national},#{political},#{depart},#{tel},#{intime})
+</insert>
+
+<!-- #{}中填写和属性名一致 -->
+<update id="updateDoctor" parameterType="Doctor" >
+update doctor set did=#{did},dname=#{dname},dsex=#{dsex},record=#{record},national=#{national},political=#{political},depart=#{depart},tel=#{tel},intime=#{intime} where id=#{id}
+</update>
+
+<delete id="delDoctor" parameterType="Integer">
+delete from doctor where id=#{id}
+</delete>
+
+<select id="getDoctor" parameterType="Integer" resultType="Doctor">
+select * from doctor where id =#{id}
+</select>
+
+<select id="selectAllDoctor" resultType="Doctor">
+select * from doctor
+</select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.hos.mapper.NoticeMapper">
+   <!-- 发布公告 -->
+ <insert id="editNotice" parameterType="Notice">
+ insert into notice (sendid,title,message,create_time) values (#{sendid},#{title},#{message},#{create_time})
+ </insert>
+ 
+ <!-- 公告列表 -->
+ <select id="showNotice" resultMap="getNoticeMap">
+SELECT n.*,a.a_name as author from notice as n LEFT JOIN admin as a ON n.sendid=a.id;
+ </select>
+ 
+ <resultMap type="Notice" id="getNoticeMap">
+ <id column="id" property="id"></id>
+ <result column="sendid" property="sendid"/>
+ <result column="title" property="title"/>
+ <result column="message" property="message"/>
+ <result column="create_time" property="create_time"/>
+ <!-- javaType 指属性的类型 -->
+ <association property="admin" javaType="Admin">
+<result column="author" property="a_name"/>
+ </association>
+ </resultMap>
+ 
+ <!-- 删除 --> 
+ <delete id="delNotice" parameterType="int">
+ delete * from notice where id=#{id}
+ </delete>
+ 
+    <!-- SELECT * FROM notice ORDER BY create_time DESC limit 1; -->
+  </mapper>
+  
+  

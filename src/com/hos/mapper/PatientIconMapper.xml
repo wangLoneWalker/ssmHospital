@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!-- 这里的id要和Mapper中的方法名一致 -->
+    
+ <mapper namespace="com.hos.mapper.PatientIconMapper">
+ <insert id="addIcon" parameterType="PatientIcon">
+ insert into patientIcon (i_pid,i_pname,detail,pic,createtime) values (#{i_pid},#{i_pname},#{detail},#{pic},#{createtime})
+ </insert>
+ <update id="updateIcon" parameterType="PatientIcon">
+ update patientIcon set i_pid=#{i_pid},i_pname=#{i_pname},detail=#{detail},pic=#{pic},createtime=#{createtime} where id=#{id}
+ </update>
+ <delete id="delIcon" parameterType="Integer">
+ delete from patientIcon where id=#{id}
+ </delete>
+ <select id="getIcon" parameterType="String" resultType="PatientIcon">
+ select * from patientIcon where i_pid=#{i_pid}
+ </select>
+ <select id="selectAllIcon" resultType="PatientIcon">
+ select * from patientIcon
+ </select>
+ </mapper>

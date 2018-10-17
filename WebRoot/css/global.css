@@ -1,0 +1,4 @@
+@CHARSET "UTF-8";
+.layui-table{text-align:center}
+.layui-table th{text-align:center}
+.layui-table tr td label{color:red; display:inline-block}
